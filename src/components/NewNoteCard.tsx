@@ -1,0 +1,12 @@
+export function NewNoteCard() {
+  return (
+    <div className="relative p-5 space-y-3 overflow-hidden rounded-md bg-slate-700">
+      <span className="text-sm font-medium text-slate-200">Adicionar Nota</span>
+      <p className="text-sm leading-6 text-slate-400">
+        Grave uma nota em áudio que será convertida para texto automaticamente.
+      </p>
+
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none bg-gradient-to-t from-black/60 to-black/0 h-1/2" />
+    </div>
+  )
+}
