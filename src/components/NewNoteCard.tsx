@@ -4,7 +4,11 @@ import { toast } from "sonner"
 
 import * as Dialog from "@radix-ui/react-dialog";
 
-export function NewNoteCard() {
+interface NewNoteCardProps {
+  onNoteCreated: (content: string) => void;
+}
+
+export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
   const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true);
   const [content, setContent] = useState("");
 
@@ -20,6 +24,10 @@ export function NewNoteCard() {
 
   function handleSaveNote(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    onNoteCreated(content)
+    setContent('');
+    setShouldShowOnboarding(true);
 
     toast.success("Nota criada com sucesso!")
   }
@@ -54,6 +62,7 @@ export function NewNoteCard() {
                 <textarea
                   autoFocus
                   className="flex-1 text-sm leading-6 bg-transparent outline-none resize-none text-slate-400"
+                  value={content}
                   onChange={handleContentChanged}
                 />
               }
